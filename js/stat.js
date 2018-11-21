@@ -50,18 +50,18 @@ window.renderStatistics = function (ctx) {
 
   var firstBarX = CLOUD_X + BAR_WIDTH + BAR_GAP;
   ctx.fillText('Иван', firstBarX, BAR_TEXT_Y);
-  ctx.fillStyle = 'blue';
+  ctx.fillStyle = 'rgba(0, 0, 255, ' + Math.random() + ')';
   ctx.fillRect(firstBarX, BAR_Y, BAR_WIDTH, BAR_HEIGHT);
 
   var secondBarX = firstBarX + BAR_WIDTH + BAR_GAP;
   ctx.fillStyle = '#000';
   ctx.fillText('Юлия', secondBarX, BAR_TEXT_Y);
-  ctx.fillStyle = 'blue';
+  ctx.fillStyle = 'rgba(0, 0, 255, ' + Math.random() + ')';
   ctx.fillRect(secondBarX, BAR_Y, BAR_WIDTH, BAR_HEIGHT);
 
   var thirdBarX = secondBarX + BAR_WIDTH + BAR_GAP;
   ctx.fillStyle = '#000';
   ctx.fillText('Игорь', thirdBarX, BAR_TEXT_Y);
-  ctx.fillStyle = 'blue';
+  ctx.fillStyle = 'rgba(0, 0, 255, ' + Math.random() + ')';
   ctx.fillRect(thirdBarX, BAR_Y, BAR_WIDTH, BAR_HEIGHT);
 };
