@@ -1,3 +1,5 @@
+'use strict';
+
 var CLOUD_X = 100;
 var CLOUD_Y = 10;
 var CLOUD_WIDTH = 420;
@@ -24,8 +26,6 @@ var renderCloud = function (ctx, x, y, color) {
 };
 
 window.renderStatistics = function (ctx, names, times) {
-  console.log(names);
-  console.log(times);
   renderCloud(ctx, CLOUD_X + SHADOW_SHIFT, CLOUD_Y + SHADOW_SHIFT, 'rgba(0, 0, 0, 0.7)');
   renderCloud(ctx, CLOUD_X, CLOUD_Y, '#fff');
 
@@ -36,13 +36,12 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', CONTENT_LEFT_PADDING, CONTENT_TOP_PADDING + GAP);
 
   var maxTime = Math.round(Math.max.apply(null, times));
-  for (let i = 0; i < names.length; i++) {
+  for (var i = 0; i < names.length; i++) {
     var nextBarX = CONTENT_LEFT_PADDING + (BAR_WIDTH + BAR_GAP) * i;
 
     var currentName = names[i];
-    var currentTime = Math.round(times[i]);
 
-    var currentColor = currentName === 'Вы'
+    var currentColor = currentName === MY_NAME
       ? 'rgba(255, 0, 0, 1)'
       : 'rgba(0, 0, 255, ' + Math.random() + ')';
 
