@@ -36,20 +36,26 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов:', CONTENT_LEFT_PADDING, CONTENT_TOP_PADDING + GAP);
 
   var maxTime = Math.round(Math.max.apply(null, times));
+
   for (var i = 0; i < names.length; i++) {
     var nextBarX = CONTENT_LEFT_PADDING + (BAR_WIDTH + BAR_GAP) * i;
 
-    var currentName = names[i];
+    drawBar(nextBarX, names[i], times[i]);
+  }
 
-    var currentColor = currentName === MY_NAME
+
+  function drawBar(barX, name, time) {
+    var barHeight = MAX_BAR_HEIGHT * time / maxTime;
+
+    ctx.fillStyle = getCurrentColor(name);
+    ctx.fillRect(barX, BAR_Y + MAX_BAR_HEIGHT - barHeight, BAR_WIDTH, barHeight);
+    ctx.fillStyle = '#000';
+    ctx.fillText(name, barX, BAR_TEXT_Y);
+  }
+
+  function getCurrentColor(name) {
+    return name === MY_NAME
       ? 'rgba(255, 0, 0, 1)'
       : 'rgba(0, 0, 255, ' + Math.random() + ')';
-
-    var barHeight = MAX_BAR_HEIGHT * times[i] / maxTime;
-
-    ctx.fillStyle = currentColor;
-    ctx.fillRect(nextBarX, BAR_Y + MAX_BAR_HEIGHT - barHeight, BAR_WIDTH, barHeight);
-    ctx.fillStyle = '#000';
-    ctx.fillText(currentName, nextBarX, BAR_TEXT_Y);
   }
 };
