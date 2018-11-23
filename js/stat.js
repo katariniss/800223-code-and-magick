@@ -43,7 +43,6 @@ window.renderStatistics = function (ctx, names, times) {
     drawBar(nextBarX, names[i], times[i]);
   }
 
-
   function drawBar(barX, name, time) {
     var barHeight = MAX_BAR_HEIGHT * time / maxTime;
 
